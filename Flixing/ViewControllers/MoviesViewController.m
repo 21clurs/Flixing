@@ -10,6 +10,7 @@
 #import "MovieCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -33,6 +34,7 @@
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
+    
     // Creating a target-action pair
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -41,7 +43,9 @@
 
 - (void)fetchMovies {
     
-    [self.activityIndicator startAnimating];
+    //[self.activityIndicator startAnimating];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     // Making the network call
     // Setup
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
@@ -72,7 +76,10 @@
                
                // Calls datasource method again in case the underlying data has changed
                [self.tableView reloadData];
-               [self.activityIndicator stopAnimating];
+               
+               //[self.activityIndicator stopAnimating];
+               [MBProgressHUD hideHUDForView:self.view animated:YES];
+               
                // TODO: Get the array of movies
                // TODO: Store the movies in a property to use elsewhere
                // TODO: Reload your table view data
