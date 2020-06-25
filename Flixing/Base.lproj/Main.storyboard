@@ -19,6 +19,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="hlc-PE-9RT">
+                                    <rect key="frame" x="0.0" y="226" width="414" height="61"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="170" id="g6T-wJ-BSP" customClass="MovieCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="170"/>
@@ -64,12 +68,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="SUT-ha-PzN"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="hlc-PE-9RT" id="niu-4B-R9g"/>
                         <outlet property="tableView" destination="MC7-G3-Qog" id="avi-Ky-wT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1794" y="138"/>
+            <point key="canvasLocation" x="1792.753623188406" y="137.94642857142856"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="qTs-X6-qBl">
