@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MoviesGridViewController : UICollectionViewController
+@interface MoviesGridViewController : UIViewController
 
 @end
 
