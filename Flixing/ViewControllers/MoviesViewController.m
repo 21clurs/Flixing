@@ -31,6 +31,9 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    //[self.activityIndicator startAnimating];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -42,9 +45,6 @@
 }
 
 - (void)fetchMovies {
-    
-    //[self.activityIndicator startAnimating];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     // Making the network call
     // Setup
@@ -60,7 +60,8 @@
                    // Handling the Try Again response here
                    [self fetchMovies];
                }];
-               // Add the OK action to the alert controller
+               
+               // Add the Try Again action to the alert controller
                [alert addAction:tryAgainAction];
                [self presentViewController:alert animated:YES completion:^{}]; // What to do with block syntax when you don't want to do anything?
            }
