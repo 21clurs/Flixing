@@ -28,6 +28,14 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.delegate = self;
     
     [self fetchMovies];
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    layout.minimumLineSpacing = 4;
+    layout.minimumInteritemSpacing = 4;
+    CGFloat postersPerRow = 2;
+    CGFloat posterWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing*(postersPerRow-1))/postersPerRow;
+    CGFloat posterHeight = posterWidth*1.5;
+    layout.itemSize = CGSizeMake(posterWidth, posterHeight);
 }
 
 - (void)fetchMovies {
