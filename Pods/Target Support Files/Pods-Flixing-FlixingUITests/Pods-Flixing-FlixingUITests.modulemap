@@ -1,0 +1,6 @@
+framework module Pods_Flixing_FlixingUITests {
+  umbrella header "Pods-Flixing-FlixingUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
