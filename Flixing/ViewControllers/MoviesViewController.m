@@ -15,12 +15,11 @@
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) NSArray *filteredMovies;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, strong) NSMutableArray *movieTitles;
-@property (nonatomic, strong) NSArray *filteredMovies;
 
 @end
 
@@ -70,16 +69,11 @@
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-
-               //NSLog(@"%@", dataDictionary);
-               
                self.movies = dataDictionary[@"results"];
                self.filteredMovies = self.movies;
                
                // Calls datasource method again in case the underlying data has changed
                [self.tableView reloadData];
-               
-               [self updateMovieTitles];
                
                //[self.activityIndicator stopAnimating];
                [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -88,13 +82,6 @@
         [self.refreshControl endRefreshing];
        }];
     [task resume];
-}
-- (void) updateMovieTitles{
-    self.movieTitles = [NSMutableArray arrayWithCapacity:self.movies.count];
-    for(NSDictionary *movie in self.movies){
-        NSString *title = [NSString stringWithString:movie[@"title"]];
-        [self.movieTitles addObject:title];
-    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -140,6 +127,18 @@
     //NSLog(@"%@",[NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);
     //cell.textLabel.text = [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section];
     return cell;
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    self.filteredMovies = self.movies;
+    [self.tableView reloadData];
 }
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
