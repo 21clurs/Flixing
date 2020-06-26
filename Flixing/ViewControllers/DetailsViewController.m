@@ -31,9 +31,18 @@
     [self.posterView setImageWithURL:posterURL];
     
     NSString *backdropURLString = self.movie[@"backdrop_path"];
-    NSString *fullBackdropURLString = [baseURLString stringByAppendingString: backdropURLString];
-    NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
-    [self.backdropView setImageWithURL: backdropURL];
+    if(![backdropURLString isEqual:[NSNull null]]){
+        NSString *fullBackdropURLString = [baseURLString stringByAppendingString: backdropURLString];
+        NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
+        [self.backdropView setImageWithURL: backdropURL];
+    }
+    else{
+        [self.backdropView setImageWithURL:posterURL];
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
+        effectView.frame = self.view.frame;
+        [self.backdropView addSubview:effectView];
+    }
     // this type of stuff belongs in a model class, but we'll do that later
     
     self.titleLabel.text = self.movie[@"title"];

@@ -80,9 +80,6 @@
                //[self.activityIndicator stopAnimating];
                [MBProgressHUD hideHUDForView:self.view animated:YES];
                
-               // TODO: Get the array of movies
-               // TODO: Store the movies in a property to use elsewhere
-               // TODO: Reload your table view data
            }
         [self.refreshControl endRefreshing];
        }];
@@ -103,11 +100,13 @@
     cell.descriptionLabel.text = movie[@"overview"];
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+    
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString: posterURLString];
+    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     
     // NSURL is basically the same as an NSString except that it checks if it is a valid URL
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+    
     cell.posterView.image = nil; // Clear out the previous image
     [cell.posterView setImageWithURL:posterURL];
     
