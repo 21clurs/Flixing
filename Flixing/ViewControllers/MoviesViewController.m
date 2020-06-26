@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -60,19 +61,18 @@
                    [self fetchMovies];
                }];
                
-               // Add the Try Again action to the alert controller
                [alert addAction:tryAgainAction];
                [self presentViewController:alert animated:YES completion:^{}]; // What to do with block syntax when you don't want to do anything?
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 
-               NSLog(@"%@", dataDictionary);
+               //NSLog(@"%@", dataDictionary);
                
                self.movies = dataDictionary[@"results"];
-               for (NSDictionary *movie in self.movies){
+               /*for (NSDictionary *movie in self.movies){
                    NSLog(@"%@", movie[@"title"]);
-               }
+               }*/
                
                // Calls datasource method again in case the underlying data has changed
                [self.tableView reloadData];
@@ -111,9 +111,19 @@
     cell.bgPosterView.image = nil;
     [cell.bgPosterView setImageWithURL:posterURL];
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    /*
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
     effectView.frame = cell.bgPosterView.frame;
     [cell.bgPosterView addSubview:effectView];
+    */
+    //cell.effectView = nil;
+    
+    if([cell.effectView isDescendantOfView:cell.bgPosterView]){
+        [cell.effectView removeFromSuperview];
+    }
+    cell.effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
+    cell.effectView.frame = cell.bgPosterView.frame;
+    [cell.bgPosterView addSubview:cell.effectView];
     
     //cell.textLabel.text = movie[@"title"];
     //NSLog(@"%@",[NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);
