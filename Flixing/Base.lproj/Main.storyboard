@@ -129,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQN-Cy-Dej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1307" y="881"/>
+            <point key="canvasLocation" x="1516" y="1630"/>
         </scene>
         <!--Movies Grid View Controller-->
         <scene sceneID="xo3-sv-BeG">
@@ -169,6 +169,7 @@
                                         <size key="customSize" width="200" height="300"/>
                                         <connections>
                                             <outlet property="posterView" destination="iwd-Le-Mlm" id="q0i-8J-ABk"/>
+                                            <segue destination="co4-EU-TGK" kind="show" id="RfV-o6-clE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -184,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gv-mX-V3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2382.608695652174" y="880.58035714285711"/>
+            <point key="canvasLocation" x="2383" y="881"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="iD6-kN-xBH">
@@ -241,4 +242,7 @@
             <point key="canvasLocation" x="594" y="175"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WDR-8U-mJX"/>
+    </inferredMetricsTieBreakers>
 </document>

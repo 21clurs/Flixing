@@ -25,7 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     // Set datasource and delegate equal to view controller
     self.tableView.dataSource = self;
@@ -133,7 +132,6 @@
     // casting
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie; // It's impolite to try to do too much to it here: keep things separate
-    NSLog(@"Tapping on a Movie");
 }
 
 @end
