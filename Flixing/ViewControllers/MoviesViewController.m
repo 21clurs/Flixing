@@ -100,15 +100,20 @@
     cell.descriptionLabel.text = movie[@"overview"];
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
-    
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString: posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    
     // NSURL is basically the same as an NSString except that it checks if it is a valid URL
     
     cell.posterView.image = nil; // Clear out the previous image
     [cell.posterView setImageWithURL:posterURL];
+    
+    cell.bgPosterView.image = nil;
+    [cell.bgPosterView setImageWithURL:posterURL];
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
+    effectView.frame = cell.bgPosterView.frame;
+    [cell.bgPosterView addSubview:effectView];
     
     //cell.textLabel.text = movie[@"title"];
     //NSLog(@"%@",[NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);

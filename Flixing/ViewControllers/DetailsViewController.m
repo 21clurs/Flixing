@@ -40,7 +40,7 @@
         [self.backdropView setImageWithURL:posterURL];
         UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
-        effectView.frame = self.view.frame;
+        effectView.frame = self.backdropView.frame;
         [self.backdropView addSubview:effectView];
     }
     // this type of stuff belongs in a model class, but we'll do that later
