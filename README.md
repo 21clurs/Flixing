@@ -2,7 +2,9 @@
 
 **Flixing** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Submitted by: **Clara Kim**
+
+Time spent: **18** hours spent in total
 
 ## User Stories
 
@@ -29,30 +31,42 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] In the detail view, when the user taps the poster, a new screen is presented modally where they can view the trailer.
+- [x] User can tap the poster in the detail view In the detail view to see the movie trailer.
+- [x] Movie ratings shown with stars in table view and detail view
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Implementation of a search bar in the collection view, as well as keeping the search bar at the top of the scrolling page (i.e. attached to the navigation bar so it doesn't disappear when scrolling down)
+2. Embedding trailer video only into the modal view, rather than the entire YouTube web view
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/lOjzYtczJg.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+Here's a walkthrough of networking error and refresh:
+
+<img src='http://g.recordit.co/triBNNgnhY.gif' title='Reload Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [Recordit](https://recordit.co/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+- When creating the collectionView, made a class implementing UICollectionViewController instead of UIViewController, caused crashing during tabbing
+- When making the backgrounds of the cells in the TableView a blurred version of the movie poster, unintended behavior of blurs layering due to the cell dequeue occurred. The EffectViews had to be checked and removed as 'new' cells appeared.
+- Spent a lot of time with the trailer functionality: ran into some issues with webkitView outlets.
+- When implementing rating stars, originally attempted to use [HCSStarRatingView](https://github.com/hsousa/HCSStarRatingView), but it was both more complicated to use and didn't have the desired effect.
 
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [MBProgressHUD](https://github.com/matej/MBProgressHUD) - an iOS activity indicator view
+- [RateView](https://github.com/taruntyagi697/RateView) - class for rating view with stars
 
 ## License
 
