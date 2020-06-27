@@ -43,7 +43,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of basic functionalities:
 
-<img src='http://g.recordit.co/yiEGE0r6fa.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/ssNrZtqwGG.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [Recordit](https://recordit.co/).
 
