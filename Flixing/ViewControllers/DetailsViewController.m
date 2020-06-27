@@ -57,7 +57,10 @@
     RateView* ratingView = [RateView rateViewWithRating:ratingFloat];
     ratingView.starSize = 18;
     [self.starRatingView addSubview:ratingView];
-    self.ratingLabel.text = [NSString stringWithFormat: @"%.2f", ratingFloat];
+    
+    NSNumber *votes = self.movie[@"vote_count"];
+    int votesFloat = [votes floatValue];
+    self.ratingLabel.text = [NSString stringWithFormat: @"%.2f / %d votes", ratingFloat, votesFloat];
     
     NSString *movieID = self.movie[@"id"];
     NSString *queryString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", movieID];
@@ -79,14 +82,9 @@
     [task resume];
 }
 
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-
     TrailerViewController *trailerView = [segue destinationViewController];
     trailerView.movieTitle = self.movie[@"title"];
     trailerView.videoURLString = self.videoURLString;

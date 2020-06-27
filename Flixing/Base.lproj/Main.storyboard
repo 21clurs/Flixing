@@ -129,7 +129,7 @@
                                         </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keX-D9-EQO">
-                                        <rect key="frame" x="232" y="233" width="40" height="21"/>
+                                        <rect key="frame" x="232" y="233" width="160" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -286,7 +286,7 @@
         <scene sceneID="CAc-jz-NPu">
             <objects>
                 <navigationController id="PwG-eQ-SK6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grid" id="d0S-0X-ZGc"/>
+                    <tabBarItem key="tabBarItem" title="Grid" image="square.grid.2x2" catalog="system" id="d0S-0X-ZGc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hz6-w1-l69">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -303,7 +303,7 @@
         <scene sceneID="gdO-k8-IFU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y4e-ud-fvH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="ib4-bw-XhR"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="ib4-bw-XhR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Loj-uP-0oj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -323,4 +323,8 @@
         <segue reference="WDR-8U-mJX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <resources>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
+    </resources>
 </document>

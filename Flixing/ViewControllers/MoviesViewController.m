@@ -46,18 +46,15 @@
 
 - (void)fetchMovies {
     
-    // Making the network call
-    // Setup
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    // Lines inside the block are called once the network call is finished
+
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
            if (error != nil) {
                NSLog(@"%@", [error localizedDescription]);
                UIAlertController *alert = [UIAlertController alertControllerWithTitle: @"Cannot Get Movies" message:@"The internet connection appears to be offline" preferredStyle: (UIAlertControllerStyleAlert)];
                UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                   // Handling the Try Again response here
                    [self fetchMovies];
                }];
                
@@ -69,10 +66,8 @@
                self.movies = dataDictionary[@"results"];
                self.filteredMovies = self.movies;
                
-               // Calls datasource method again in case the underlying data has changed
                [self.tableView reloadData];
                
-               //[self.activityIndicator stopAnimating];
                [MBProgressHUD hideHUDForView:self.view animated:YES];
                
            }
@@ -86,8 +81,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    // UITableViewCell expects to be in a tableView
-    // UITableViewCell *cell = [[UITableViewCell alloc] init]; //have to call manual initializer in objective-C
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
     NSDictionary *movie = self.filteredMovies[indexPath.row];
@@ -98,7 +91,6 @@
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString: posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    // NSURL is basically the same as an NSString except that it checks if it is a valid URL
     
     cell.posterView.image = nil; // Clear out the previous image
     [cell.posterView setImageWithURL:posterURL];
@@ -106,7 +98,6 @@
     cell.bgPosterView.image = nil;
     [cell.bgPosterView setImageWithURL:posterURL];
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    
     if([cell.effectView isDescendantOfView:cell.bgPosterView]){
         [cell.effectView removeFromSuperview];
     }
@@ -120,9 +111,6 @@
     cell.ratingView.starSize = 18;
     [cell.starRatingView addSubview:cell.ratingView];
     
-    //cell.textLabel.text = movie[@"title"];
-    //NSLog(@"%@",[NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);
-    //cell.textLabel.text = [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section];
     return cell;
 }
 
@@ -154,18 +142,13 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    // sender: generic word used for the object that fired the event
-    UITableViewCell *tappedCell = sender; // In this case the id is the tableView cell that was tapped
+    UITableViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
-    // casting
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
+    
     DetailsViewController *detailsViewController = [segue destinationViewController];
-    detailsViewController.movie = movie; // It's impolite to try to do too much to it here: keep things separate
+    detailsViewController.movie = movie;
 }
 
 @end
