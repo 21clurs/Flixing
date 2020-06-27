@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -29,6 +30,10 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.delegate = self;
     
     [self fetchMovies];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView insertSubview:self.refreshControl atIndex:0];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     layout.minimumLineSpacing = 4;
@@ -59,6 +64,7 @@ static NSString * const reuseIdentifier = @"Cell";
                self.movies = dataDictionary[@"results"];
                [self.collectionView reloadData];
            }
+        [self.refreshControl endRefreshing];
 
        }];
     [task resume];

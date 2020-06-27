@@ -28,19 +28,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Set datasource and delegate equal to view controller
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     
-    //[self.activityIndicator startAnimating];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self fetchMovies];
     
-    
     self.refreshControl = [[UIRefreshControl alloc] init];
-    
     // Creating a target-action pair
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
