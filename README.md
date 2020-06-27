@@ -45,10 +45,6 @@ Here's a walkthrough of basic functionalities:
 
 <img src='http://g.recordit.co/yiEGE0r6fa.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-Here's a walkthrough of trailer viewing:
-
-<img src='http://g.recordit.co/lsedWp97Je.gif' title='Trailer Video Walkthrough' width='' alt='Video Walkthrough' />
-
 Here's a walkthrough of networking error and refresh:
 
 <img src='http://g.recordit.co/triBNNgnhY.gif' title='Reload Video Walkthrough' width='' alt='Video Walkthrough' />
