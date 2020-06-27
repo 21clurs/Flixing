@@ -38,10 +38,8 @@
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    // Creating a target-action pair
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-    //[self.tableView addSubview:self.refreshControl];
 }
 
 - (void)fetchMovies {
