@@ -4,7 +4,7 @@
 
 Submitted by: **Clara Kim**
 
-Time spent: **18** hours spent in total
+Time spent: **19** hours spent in total
 
 ## User Stories
 
@@ -41,9 +41,13 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of basic functionalities:
 
-<img src='http://g.recordit.co/lOjzYtczJg.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/dr2XJiEoEk.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+Here's a walkthrough of trailer viewing:
+
+<img src='http://g.recordit.co/wYF3dwc0km.gif' title='Trailer Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Here's a walkthrough of networking error and refresh:
 
