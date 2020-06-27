@@ -45,11 +45,7 @@ Here's a walkthrough of basic functionalities:
 
 <img src='http://g.recordit.co/yiEGE0r6fa.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-Here's a walkthrough of networking error and refresh:
-
-<img src='http://g.recordit.co/triBNNgnhY.gif' title='Reload Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIFs created with [Recordit](https://recordit.co/).
+GIF created with [Recordit](https://recordit.co/).
 
 ## Notes
 
