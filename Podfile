@@ -8,6 +8,8 @@ target 'Flixing' do
   # Pods for Flixing
   pod 'AFNetworking'
   pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'HCSStarRatingView', '~> 1.5'
+  pod 'RateView'
 
   target 'FlixingTests' do
     inherit! :search_paths

@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 #import "MBProgressHUD/MBProgressHUD.h"
+#import "RateView/RateView.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -112,6 +113,12 @@
     cell.effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
     cell.effectView.frame = cell.bgPosterView.frame;
     [cell.bgPosterView addSubview:cell.effectView];
+    
+    NSNumber *rating = movie[@"vote_average"];
+    CGFloat ratingFloat = [rating floatValue]/2;
+    cell.ratingView = [RateView rateViewWithRating:ratingFloat];
+    cell.ratingView.starSize = 18;
+    [cell.starRatingView addSubview:cell.ratingView];
     
     //cell.textLabel.text = movie[@"title"];
     //NSLog(@"%@",[NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);

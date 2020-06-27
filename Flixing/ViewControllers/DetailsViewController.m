@@ -9,12 +9,15 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "TrailerViewController.h"
+#import "RateView/RateView.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropView;
+@property (weak, nonatomic) IBOutlet UIImageView *starRatingView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (strong, nonatomic) NSString *videoURLString;
 
 @end
@@ -49,6 +52,12 @@
     [self.titleLabel sizeToFit]; // Adjust label to fit whatever is in it now
     [self.descriptionLabel sizeToFit];
     
+    NSNumber *rating = self.movie[@"vote_average"];
+    CGFloat ratingFloat = [rating floatValue]/2;
+    RateView* ratingView = [RateView rateViewWithRating:ratingFloat];
+    ratingView.starSize = 18;
+    [self.starRatingView addSubview:ratingView];
+    self.ratingLabel.text = [NSString stringWithFormat: @"%.2f", ratingFloat];
     
     NSString *movieID = self.movie[@"id"];
     NSString *queryString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", movieID];
