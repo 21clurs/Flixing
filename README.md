@@ -47,7 +47,7 @@ Here's a walkthrough of basic functionalities:
 
 Here's a walkthrough of trailer viewing:
 
-<img src='http://g.recordit.co/wYF3dwc0km.gif' title='Trailer Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/lsedWp97Je.gif' title='Trailer Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Here's a walkthrough of networking error and refresh:
 
