@@ -49,22 +49,14 @@ static NSString * const reuseIdentifier = @"Cell";
                NSLog(@"%@", [error localizedDescription]);
                UIAlertController *alert = [UIAlertController alertControllerWithTitle: @"Cannot Get Movies" message:@"The internet connection appears to be offline" preferredStyle: (UIAlertControllerStyleAlert)];
                UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                   // Handling the Try Again response here
                    [self fetchMovies];
                }];
-               
-               // Add the Try Again action to the alert controller
                [alert addAction:tryAgainAction];
                [self presentViewController:alert animated:YES completion:^{}];
            }
            else {
-               // TODO: Get the array of movies
-               // TODO: Store the movies in a property to use elsewhere
-               // TODO: Reload your table view data
-               
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                self.movies = dataDictionary[@"results"];
-               
                [self.collectionView reloadData];
            }
 

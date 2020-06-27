@@ -109,12 +109,6 @@
     cell.bgPosterView.image = nil;
     [cell.bgPosterView setImageWithURL:posterURL];
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    /*
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
-    effectView.frame = cell.bgPosterView.frame;
-    [cell.bgPosterView addSubview:effectView];
-    */
-    //cell.effectView = nil;
     
     if([cell.effectView isDescendantOfView:cell.bgPosterView]){
         [cell.effectView removeFromSuperview];

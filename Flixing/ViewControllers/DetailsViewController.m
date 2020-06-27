@@ -8,12 +8,14 @@
 
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "TrailerViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) NSString *videoURLString;
 
 @end
 
@@ -21,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     
@@ -43,24 +44,44 @@
         effectView.frame = self.backdropView.frame;
         [self.backdropView addSubview:effectView];
     }
-    // this type of stuff belongs in a model class, but we'll do that later
-    
     self.titleLabel.text = self.movie[@"title"];
     self.descriptionLabel.text = self.movie[@"overview"];
-    
     [self.titleLabel sizeToFit]; // Adjust label to fit whatever is in it now
     [self.descriptionLabel sizeToFit];
     
+    
+    NSString *movieID = self.movie[@"id"];
+    NSString *queryString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", movieID];
+    NSURL *url = [NSURL URLWithString:queryString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+           if (error != nil) {
+               NSLog(@"%@", [error localizedDescription]);
+           }
+           else {
+               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               NSArray *results = dataDictionary[@"results"];
+               NSDictionary *movieInfo = results[0];
+               self.videoURLString = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", movieInfo[@"key"]];
+           }
+       }];
+    [task resume];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+
+    TrailerViewController *trailerView = [segue destinationViewController];
+    trailerView.movieTitle = self.movie[@"title"];
+    trailerView.videoURLString = self.videoURLString;
 }
-*/
+
 
 @end
