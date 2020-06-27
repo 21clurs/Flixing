@@ -43,7 +43,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of basic functionalities:
 
-<img src='http://g.recordit.co/dr2XJiEoEk.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/lsedWp97Je.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Here's a walkthrough of trailer viewing:
 
@@ -53,7 +53,7 @@ Here's a walkthrough of networking error and refresh:
 
 <img src='http://g.recordit.co/triBNNgnhY.gif' title='Reload Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [Recordit](https://recordit.co/).
+GIFs created with [Recordit](https://recordit.co/).
 
 ## Notes
 
