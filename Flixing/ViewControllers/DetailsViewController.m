@@ -62,24 +62,26 @@
     int votesFloat = [votes floatValue];
     self.ratingLabel.text = [NSString stringWithFormat: @"%.2f / %d votes", ratingFloat, votesFloat];
     
-    NSString *movieID = self.movie[@"id"];
-    NSString *queryString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", movieID];
-    NSURL *url = [NSURL URLWithString:queryString];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-           if (error != nil) {
-               NSLog(@"%@", [error localizedDescription]);
-           }
-           else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSArray *results = dataDictionary[@"results"];
-               NSDictionary *movieInfo = results[0];
-               self.videoURLString = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", movieInfo[@"key"]];
-           }
-       }];
-    [task resume];
+    if ([[self.movie objectForKey:@"video"]boolValue] == YES){
+        NSString *movieID = self.movie[@"id"];
+        NSString *queryString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", movieID];
+        NSURL *url = [NSURL URLWithString:queryString];
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+               if (error != nil) {
+                   NSLog(@"%@", [error localizedDescription]);
+               }
+               else {
+                   NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                   NSArray *results = dataDictionary[@"results"];
+                   NSDictionary *movieInfo = results[0];
+                   self.videoURLString = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", movieInfo[@"key"]];
+               }
+           }];
+        [task resume];
+    }
 }
 
 #pragma mark - Navigation

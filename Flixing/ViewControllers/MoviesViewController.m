@@ -90,7 +90,7 @@
     NSString *fullPosterURLString = [baseURLString stringByAppendingString: posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     
-    cell.posterView.image = nil; // Clear out the previous image
+    cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
     
     cell.bgPosterView.image = nil;
