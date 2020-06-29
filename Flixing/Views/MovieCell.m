@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    [self.bgPosterView sendSubviewToBack:self.posterView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

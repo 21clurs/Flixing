@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
-@property (weak, nonatomic) IBOutlet UIImageView *bgPosterView;
 @property (strong, nonatomic) UIVisualEffectView *effectView;
 @property (weak, nonatomic) IBOutlet UIImageView *starRatingView;
 @property (strong, nonatomic) RateView *ratingView;
+@property (weak, nonatomic) IBOutlet UIImageView *bgPosterView;
 
 @end
 
