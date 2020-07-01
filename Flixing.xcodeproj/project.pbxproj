@@ -25,6 +25,8 @@
 		F950975924A694ED00229812 /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F950975824A694ED00229812 /* TrailerViewController.m */; };
 		F950975B24A697DB00229812 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F950975A24A697DA00229812 /* WebKit.framework */; };
 		F989203A24A3FF0F00C1E1C5 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F989203924A3FF0F00C1E1C5 /* MovieCell.m */; };
+		F999A42024ACEADF00FC2920 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = F999A41F24ACEADF00FC2920 /* Movie.m */; };
+		F999A42724AD1B0600FC2920 /* MovieAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F999A42624AD1B0600FC2920 /* MovieAPIManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		F950975A24A697DA00229812 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F989203824A3FF0F00C1E1C5 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		F989203924A3FF0F00C1E1C5 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		F999A41E24ACEADF00FC2920 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Movie.h; path = ViewControllers/Movie.h; sourceTree = "<group>"; };
+		F999A41F24ACEADF00FC2920 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Movie.m; path = ViewControllers/Movie.m; sourceTree = "<group>"; };
+		F999A42524AD1B0600FC2920 /* MovieAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieAPIManager.h; sourceTree = "<group>"; };
+		F999A42624AD1B0600FC2920 /* MovieAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieAPIManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,9 @@
 		F91320BA24A3BA51007E3617 /* Flixing */ = {
 			isa = PBXGroup;
 			children = (
+				F999A42124AD025600FC2920 /* API */,
+				F999A41E24ACEADF00FC2920 /* Movie.h */,
+				F999A41F24ACEADF00FC2920 /* Movie.m */,
 				F91320F624A3C3E6007E3617 /* Models */,
 				F91320F524A3C3DD007E3617 /* Views */,
 				F91320F324A3C3BD007E3617 /* ViewControllers */,
@@ -228,6 +237,15 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F999A42124AD025600FC2920 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F999A42524AD1B0600FC2920 /* MovieAPIManager.h */,
+				F999A42624AD1B0600FC2920 /* MovieAPIManager.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,8 +488,10 @@
 			files = (
 				F91320BD24A3BA51007E3617 /* AppDelegate.m in Sources */,
 				F989203A24A3FF0F00C1E1C5 /* MovieCell.m in Sources */,
+				F999A42024ACEADF00FC2920 /* Movie.m in Sources */,
 				F91320F224A3C313007E3617 /* MoviesViewController.m in Sources */,
 				F91D42D624A412690092A0CF /* DetailsViewController.m in Sources */,
+				F999A42724AD1B0600FC2920 /* MovieAPIManager.m in Sources */,
 				F94C4A7F24A5400800D313B0 /* MovieCollectionCell.m in Sources */,
 				F91320CE24A3BA52007E3617 /* main.m in Sources */,
 				F91320C024A3BA51007E3617 /* SceneDelegate.m in Sources */,
